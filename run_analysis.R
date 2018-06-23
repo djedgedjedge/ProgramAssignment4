@@ -11,17 +11,16 @@ run_analysis <- function(){
         
         # Read the features in order to name correctly the variable of the final data set
         features <- read.table("./Dataset/features.txt", colClasses = "character")
-        #features[,2] <- gsub("\\(\\)+", "_", features[,2])
         # Read the activity lables in order to lable correctly the activities in the final data set
         activity_lable <- read.table("./Dataset/activity_labels.txt", col.names = c("lable", "lable_desc"))
         
         
         # Read the data test and assign the features names to the data test variables
-        # >> data test has now appropriate descriptive variables
+        # >> data test have now appropriate descriptive variables
         data_test <- read.table("./Dataset/test/X_test.txt", colClasses = "numeric", col.names = c(features[,2]), check.names=FALSE)
         # read the lable test
         # Merge the lable test with the description of the activities  - use inner join to preserve the order
-        # >> activities has descriptive lable
+        # >> activities have descriptive lable
         lable_test <- read.table("./Dataset/test/Y_test.txt", colClasses = "integer", col.names = "lable") %>%
                 inner_join(activity_lable, by = "lable")
         # Read Subject ID for the dataset test
@@ -29,11 +28,11 @@ run_analysis <- function(){
 
         
         # Read the data and lable train and assign the features names to the data train variables
-        # >> data train has now appropriate descriptive variables
+        # >> data train have now appropriate descriptive variables
         data_train <- read.table("./Dataset/train/X_train.txt", colClasses = "numeric", col.names = c(features[,2]), check.names=FALSE)
         # Read the data and lable train
         # Merge the lable test with the description of the activities - use inner join to preserve the order
-        # >> activities has descriptive lable
+        # >> activities have descriptive lable
         lable_train <- read.table("./Dataset/train/Y_train.txt", colClasses = "integer", col.names = "lable") %>%
                 inner_join(activity_lable, by = "lable")
         # Read Subject ID for the dataset train
