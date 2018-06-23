@@ -46,7 +46,7 @@ run_analysis <- function(){
         data <- rbind(data_test, data_train)
         myfeatures <- grep('*mean\\(\\)*|*std\\(\\)*',features[,2])
         data <- data[,myfeatures]
-        data <- cbind(lable, subject, data)
+        data <- cbind(lable["lable_desc"], subject, data)
         
         # Perform mean calculation grouped by subject and lable desc
         data_avg <- data %>% group_by(lable_desc, subject) %>% summarize_all(funs(mean))
